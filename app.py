@@ -141,13 +141,13 @@ if st.button("ダウンロードデータの生成"):
         csv = merge_df.to_csv().encode('utf-8')
 
         st.write("ダウンロードデータの生成が完了しました")
+        
+        st.download_button(
+        label = 'Download data as CSV',
+        data = csv,
+        file_name=f'{directory_name}.csv',
+        mime='text/csv',
+        )
 
     except:
         st.error('エラーが起きています。コードを確認してください')
-
-st.download_button(
-    label = 'Download data as CSV',
-    data = csv,
-    file_name=f'{directory_name}.csv',
-    mime='text/csv',
-)
