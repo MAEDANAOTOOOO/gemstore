@@ -58,9 +58,9 @@ if st.button("ダウンロードデータの生成"):
                 
                 if page_soup.select('h2:-soup-contains("商品が見つかりません")') :
                     break
-                goods_tags = page_soup.select('div#ProductGridContainer ul#product-grid >li>div>div>div.card__content h3>a')
+                goods_tags = page_soup.select('div#ProductGridContainer ul#product-grid >li>div>div>div.card__content h3 > a')
                 for goods_tag in goods_tags:
-                    goods_list.append(goods_tag.get('href'))
+                    goods_list.append(goods_tag.get('href')) 
                 
                 st.write(f"{page_url}")
                 
