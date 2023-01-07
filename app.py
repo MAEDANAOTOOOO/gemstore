@@ -53,7 +53,6 @@ if st.button("ダウンロードデータの生成"):
             for i in range(1000):
                 page_url = section_url.format(i+1)
                 page_r = requests.get(page_url)
-                page_r.raise_for_status()
                 sleep(1)
                 page_soup = BeautifulSoup(page_r.content,'lxml')
                 
