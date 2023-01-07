@@ -56,20 +56,12 @@ if st.button("ダウンロードデータの生成"):
                 page_r.raise_for_status()
                 sleep(1)
                 page_soup = BeautifulSoup(page_r.content,'lxml')
-                keyword = page_soup.select_one('div#ProductGridContainer h2')
                 
-                if not keyword:
-                    goods_tags = page_soup.select('div#ProductGridContainer ul#product-grid >li>div>div>div.card__content h3 > a')
-                    for goods_tag in goods_tags:
-                        goods_list.append(goods_tag.get('href'))
-
-                elif "商品が見つかりません" in keyword.text:
+                if page_soup.select('h2:-soup-contains("商品が見つかりません")') :
                     break
-
-                else:
-                    goods_tags = page_soup.select('div#ProductGridContainer ul#product-grid >li>div>div>div.card__content h3 > a')
-                    for goods_tag in goods_tags:
-                        goods_list.append(goods_tag.get('href'))
+                goods_tags = page_soup.select('div#ProductGridContainer ul#product-grid >li>div>div>div.card__content h3>a')
+                for goods_tag in goods_tags:
+                    goods_list.append(goods_tag.get('href'))
                 
                 st.write(f"{page_url}")
                 
