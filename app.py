@@ -71,6 +71,8 @@ if st.button("ダウンロードデータの生成"):
                     for goods_tag in goods_tags:
                         goods_list.append(goods_tag.get('href'))
                 
+                st.write(f"{page_url}")
+                
         st.write("全商品ページURLの取得が完了しました。")
         st.write(f"アイテム数は{len(goods_list)}個です")
         st.write("STEP2：商品の詳細データを取得中です")
