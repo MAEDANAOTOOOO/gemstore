@@ -60,8 +60,8 @@ if st.button("ダウンロードデータの生成"):
                 
                 if not keyword:
                     goods_tags = page_soup.select('div#ProductGridContainer ul#product-grid >li>div>div>div.card__content h3 > a')
-                for goods_tag in goods_tags:
-                    goods_list.append(goods_tag.get('href'))
+                    for goods_tag in goods_tags:
+                        goods_list.append(goods_tag.get('href'))
 
                 elif "商品が見つかりません" in keyword.text:
                     break
